@@ -33,3 +33,15 @@ export async function getDashbordDatas() {
   return { totalCategories, totalfranchise, totalProducts, lowStockCount };
 }
 
+export async function getLowStockProducts() {
+  const products = await subProductModel.find({
+    $expr: { $lte: ["$quantity", "$minimumQuantity"] }
+  }).populate('category', 'name') // Assuming there is a category field to populate
+    .sort({ quantity: 1 });
+
+  return { 
+    totalProducts: products.length,
+    products 
+  };
+}
+

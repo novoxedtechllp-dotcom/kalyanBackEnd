@@ -40,8 +40,11 @@ export async function saveSubProduct(productData) {
 
   const subproduct = await subProductModel.create({
     ...productData,
-    quantity: 0,
-    stock: [],
+    quantity: Number(productData.quantity) || 0,
+    stock: productData.franchise ? [{ 
+      franchiseId: productData.franchise, 
+      quantity: Number(productData.quantity) || 0 
+    }] : []
   });
 
   // Find the category by ID and update the products array
