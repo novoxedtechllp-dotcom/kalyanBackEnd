@@ -1,0 +1,584 @@
+{
+  "info": {
+    "name": "server.js",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "*",
+      "item": [
+        {
+          "name": "OPTIONS *",
+          "request": {
+            "method": "OPTIONS",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}*",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "*"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "auth",
+      "item": [
+        {
+          "name": "POST /auth/login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "category",
+      "item": [
+        {
+          "name": "POST /category/add",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/category/add",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "category",
+                "add"
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /category/all",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/category/all",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "category",
+                "all"
+              ]
+            }
+          }
+        },
+        {
+          "name": "PUT /category/update/:id",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/category/update/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "category",
+                "update",
+                ":id"
+              ]
+            }
+          }
+        },
+        {
+          "name": "DELETE /category/delete/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/category/delete/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "category",
+                "delete",
+                ":id"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "franchise",
+      "item": [
+        {
+          "name": "POST /franchise/add",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/franchise/add",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "franchise",
+                "add"
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /franchise/all",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/franchise/all",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "franchise",
+                "all"
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /franchise/single/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/franchise/single/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "franchise",
+                "single",
+                ":id"
+              ]
+            }
+          }
+        },
+        {
+          "name": "PUT /franchise/update/:id",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/franchise/update/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "franchise",
+                "update",
+                ":id"
+              ]
+            }
+          }
+        },
+        {
+          "name": "DELETE /franchise/delete/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/franchise/delete/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "franchise",
+                "delete",
+                ":id"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "product",
+      "item": [
+        {
+          "name": "GET /product/all",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/product/all",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "product",
+                "all"
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /product/all_franchise",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/product/all_franchise",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "product",
+                "all_franchise"
+              ]
+            }
+          }
+        },
+        {
+          "name": "POST /product/create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/product/create",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "product",
+                "create"
+              ]
+            }
+          }
+        },
+        {
+          "name": "PUT /product/update/:id",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/product/update/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "product",
+                "update",
+                ":id"
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /product/single/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/product/single/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "product",
+                "single",
+                ":id"
+              ]
+            }
+          }
+        },
+        {
+          "name": "DELETE /product/delete/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/product/delete/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "product",
+                "delete",
+                ":id"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "subproduct",
+      "item": [
+        {
+          "name": "GET /subproduct/all",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/subproduct/all",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "subproduct",
+                "all"
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /subproduct/all_franchise",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/subproduct/all_franchise",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "subproduct",
+                "all_franchise"
+              ]
+            }
+          }
+        },
+        {
+          "name": "POST /subproduct/create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/subproduct/create",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "subproduct",
+                "create"
+              ]
+            }
+          }
+        },
+        {
+          "name": "PUT /subproduct/update/:id",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/subproduct/update/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "subproduct",
+                "update",
+                ":id"
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /subproduct/single/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/subproduct/single/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "subproduct",
+                "single",
+                ":id"
+              ]
+            }
+          }
+        },
+        {
+          "name": "DELETE /subproduct/delete/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/subproduct/delete/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "subproduct",
+                "delete",
+                ":id"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "GET /api/low-stock-count",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/low-stock-count",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "low-stock-count"
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /api/low-stock-products",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/low-stock-products",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "low-stock-products"
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /api/dashboard",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "dashboard"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "stock",
+      "item": [
+        {
+          "name": "POST /stock/add",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/stock/add",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "stock",
+                "add"
+              ]
+            }
+          }
+        },
+        {
+          "name": "POST /stock/out",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/stock/out",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "stock",
+                "out"
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /stock/all",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/stock/all",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "stock",
+                "all"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "/",
+      "item": [
+        {
+          "name": "GET /",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": []
+            }
+          }
+        },
+        {
+          "name": "GET /",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": []
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

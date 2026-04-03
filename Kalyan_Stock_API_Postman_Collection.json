@@ -1,0 +1,842 @@
+{
+	"info": {
+		"_postman_id": "kalyan-stock-api",
+		"name": "Kalyan Stock Management API",
+		"description": "Complete API collection for Kalyan Stock Management System including authentication, products, categories, franchises, stock management, and dashboard endpoints.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    const response = pm.response.json();",
+									"    if (response.token) {",
+									"        pm.collectionVariables.set('authToken', response.token);",
+									"        pm.collectionVariables.set('userEmail', response.user?.email || 'admin@example.com');",
+									"    }",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@example.com\",\n    \"password\": \"admin123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Authentication endpoints for user login and token management"
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Get All Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/category/all",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"category",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"categoryName\": \"Electronics\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/category/add",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"category",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"categoryName\": \"Updated Electronics\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/category/update/{{categoryId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"category",
+								"update",
+								"{{categoryId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/category/delete/{{categoryId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"category",
+								"delete",
+								"{{categoryId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Category management endpoints"
+		},
+		{
+			"name": "Franchises",
+			"item": [
+				{
+					"name": "Get All Franchises",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/franchise/all",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"franchise",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Franchise",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/franchise/single/{{franchiseId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"franchise",
+								"single",
+								"{{franchiseId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Franchise",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"franchiseName\": \"Main Branch\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/franchise/add",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"franchise",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Franchise",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"franchiseName\": \"Updated Main Branch\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/franchise/update/{{franchiseId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"franchise",
+								"update",
+								"{{franchiseId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Franchise",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/franchise/delete/{{franchiseId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"franchise",
+								"delete",
+								"{{franchiseId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Franchise management endpoints"
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/product/all",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Products by Franchise",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/product/all_franchise",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product",
+								"all_franchise"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/product/single/{{productId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product",
+								"single",
+								"{{productId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productName\": \"Laptop\",\n    \"productCode\": \"LP001\",\n    \"category\": \"{{categoryId}}\",\n    \"description\": \"High-performance laptop\",\n    \"price\": 999.99\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/product/create",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productName\": \"Updated Laptop\",\n    \"productCode\": \"LP001-UPDATED\",\n    \"category\": \"{{categoryId}}\",\n    \"description\": \"Updated high-performance laptop\",\n    \"price\": 1099.99\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/product/update/{{productId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product",
+								"update",
+								"{{productId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/product/delete/{{productId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product",
+								"delete",
+								"{{productId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Product management endpoints"
+		},
+		{
+			"name": "Sub Products",
+			"item": [
+				{
+					"name": "Get All Sub Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/subproduct/all",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subproduct",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Sub Products by Franchise",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/subproduct/all_franchise",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subproduct",
+								"all_franchise"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Sub Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/subproduct/single/{{subProductId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subproduct",
+								"single",
+								"{{subProductId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Sub Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Laptop Model X\",\n    \"productCode\": \"LPX001\",\n    \"productName\": \"{{productId}}\",\n    \"franchise\": \"{{franchiseId}}\",\n    \"quantity\": 50,\n    \"minimumQuantity\": 10,\n    \"price\": 999.99,\n    \"categoryName\": \"Electronics\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/subproduct/create",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subproduct",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Sub Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Laptop Model X\",\n    \"productCode\": \"LPX001-UPDATED\",\n    \"productName\": \"{{productId}}\",\n    \"franchise\": \"{{franchiseId}}\",\n    \"quantity\": 75,\n    \"minimumQuantity\": 15,\n    \"price\": 1099.99,\n    \"categoryName\": \"Electronics\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/subproduct/update/{{subProductId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subproduct",
+								"update",
+								"{{subProductId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Sub Product",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/subproduct/delete/{{subProductId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subproduct",
+								"delete",
+								"{{subProductId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Low Stock Count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/low-stock-count",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"low-stock-count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Low Stock Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/low-stock-products?page=1&limit=20&franchise={{franchiseId}}&search=laptop",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"low-stock-products"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "Page number for pagination"
+								},
+								{
+									"key": "limit",
+									"value": "20",
+									"description": "Number of items per page"
+								},
+								{
+									"key": "franchise",
+									"value": "{{franchiseId}}",
+									"description": "Filter by franchise ID (optional)"
+								},
+								{
+									"key": "search",
+									"value": "laptop",
+									"description": "Search term (optional)"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Sub product management endpoints including low stock alerts"
+		},
+		{
+			"name": "Stock Management",
+			"item": [
+				{
+					"name": "Get All Stock Reports",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/stock/all",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stock",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Stock In",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": \"{{productId}}\",\n    \"franchiseId\": \"{{franchiseId}}\",\n    \"quantity\": 100,\n    \"type\": \"in\",\n    \"notes\": \"New stock addition\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/stock/add",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stock",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Stock Out",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": \"{{productId}}\",\n    \"franchiseId\": \"{{franchiseId}}\",\n    \"quantity\": 25,\n    \"type\": \"out\",\n    \"notes\": \"Customer purchase\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/stock/out",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stock",
+								"out"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Stock management endpoints for tracking inventory movements"
+		},
+		{
+			"name": "Dashboard",
+			"item": [
+				{
+					"name": "Get Dashboard Data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/dashboard",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"dashboard"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Dashboard endpoints for analytics and reporting"
+		},
+		{
+			"name": "System",
+			"item": [
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/",
+							"host": [
+								"{{baseUrl}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "System health and status endpoints"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Auto-set baseUrl if not defined",
+					"if (!pm.collectionVariables.get('baseUrl')) {",
+					"    pm.collectionVariables.set('baseUrl', 'http://localhost:3000');",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Global response logging",
+					"console.log('Response Status:', pm.response.code);",
+					"console.log('Response Time:', pm.response.responseTime + 'ms');"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "authToken",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "categoryId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "franchiseId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "productId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "subProductId",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
