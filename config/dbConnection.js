@@ -60,10 +60,7 @@ console.log(" Mongo URI in dbConnection:", MONGO_URI);
 
 export const initialize = async () => {
   try {
-    await mongoose.connect(MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(MONGO_URI);
     // ✅ Log connection details
     console.log("✅ Connected to MongoDB Cluster:", mongoose.connection.host);
     console.log("✅ Connected to MongoDB Database:", mongoose.connection.name);

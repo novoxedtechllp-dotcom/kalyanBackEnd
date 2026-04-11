@@ -9,7 +9,7 @@ const productSchema = new Schema(
       unique: true,
     },
     productCode: {
-      type: String,   
+      type: String,
       required: true,
       unique: true,
     },
@@ -50,7 +50,7 @@ const productSchema = new Schema(
         },
         quantity: {
           type: Number,
-          required: true,
+          required: false,
         },
       },
     ],
@@ -63,7 +63,7 @@ const productSchema = new Schema(
         quantity: {
           type: Number,
         },
-    
+
       },
     ],
     totalPrice: {
