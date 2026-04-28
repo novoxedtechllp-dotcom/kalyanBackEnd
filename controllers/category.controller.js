@@ -15,7 +15,8 @@ export async function addCategory(req, res, next) {
 // get all category
 export async function getAllCategory(req, res, next) {
   try {
-    const result = await getAll();
+    const { page = 1, limit = 10, search = '' } = req.query;
+    const result = await getAll(page, limit, search);
     res.status(200).send(result);
   } catch (err) {
     next(err);

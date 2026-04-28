@@ -14,10 +14,23 @@ export async function saveCategory(data) {
 }
 
 //---------- get all categories --------------
-export async function getAll() {
-  const category = await categoryModel.find().sort({ createdAt: -1 });;
-  const total = await categoryModel.find().countDocuments();
-  return { category, total };
+export async function getAll(page = 1, limit = 10, search = '') {
+  const query = {};
+  if (search && search.trim()) {
+    query.categoryName = { $regex: search.trim(), $options: 'i' };
+  }
+
+  const [category, total] = await Promise.all([
+    categoryModel
+      .find(query)
+      .sort({ createdAt: -1 })
+      .skip((Number(page) - 1) * Number(limit))
+      .limit(Number(limit)),
+    categoryModel.countDocuments(query),
+  ]);
+
+  const totalPages = Math.ceil(total / limit);
+  return { category, total, totalPages };
 }
 
 //--------- update category ---------------

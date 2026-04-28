@@ -312,6 +312,10 @@ if (typeof SlowBuffer === 'undefined') {
   global.SlowBuffer.prototype = Buffer.prototype;
 }
 
+// ✅ DNS Configuration for MongoDB connection
+import dns from 'dns';
+dns.setServers(['8.8.8.8', '1.1.1.1']);
+
 import express from "express";
 import cors from "cors";
 import "dotenv/config";
